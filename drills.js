@@ -49,4 +49,61 @@ function testMergeSort() {
   console.log(mergeSort(data));
 }
 
-testMergeSort();
+// testMergeSort();
+
+const { LinkedList, getMiddle, display } = require('./ll');
+
+const list = new LinkedList();
+data.forEach(num => {
+  list.insertLast(num);
+});
+
+function sortLinkedList(list) {
+  if (list.head === null || (list.head && list.head.next === null)) {
+    return list;
+  }
+  list.head = splitLinkedList(list.head);
+  return list;
+}
+
+function splitLinkedList(node) {
+  if (node === null || node.next === null) {
+    return node;
+  }
+  const middle = getMiddle(node);
+  let right = middle.next;
+  middle.next = null;
+  let left = node;
+
+  left = splitLinkedList(left);
+  right = splitLinkedList(right);
+  return mergeLL(left, right);
+}
+
+function mergeLL(left, right) {
+  let tempList = new LinkedList;
+  while (left !== null && right !== null) {
+    if (left.value < right.value) {
+      tempList.insertLast(left.value);
+      left = left.next;
+    } else {
+      tempList.insertLast(right.value);
+      right = right.next;
+    }
+  }
+  if (left === null) {
+    while (right !== null) {
+      tempList.insertLast(right.value);
+      right = right.next;
+    }
+  }
+  if (right === null) {
+    while (left !== null) {
+      tempList.insertLast(left.value);
+      left = left.next;
+    }
+  }
+  return tempList.head;
+}
+
+display(sortLinkedList(list));

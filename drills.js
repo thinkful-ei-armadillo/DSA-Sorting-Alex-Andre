@@ -29,4 +29,8 @@ The seventh merge is between: [1, 21, 26, 45], [2, 9, 28, 29]
   [14, 17, 13, 15, 19, 10, 3, 16, 9, 12]
 
   - when using the last item as a pivot
+  [3, 9, 10, 12, 19, 14, 17, 16, 13, 15]
+
+  - when using the first item as a pivot
+   [10, 3, 9, 12, 13, 14, 16, 19, 17, 15]
 */

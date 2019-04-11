@@ -106,4 +106,28 @@ function mergeLL(left, right) {
   return tempList.head;
 }
 
-display(sortLinkedList(list));
+// display(sortLinkedList(list));
+
+//shuffle an array
+
+//Fisher-Yates shuffle
+function shuffle(arr) {
+  let n = arr.length, temp, i;
+
+  while (n) {
+    i = Math.floor(Math.random() * n--);
+
+    temp = arr[n];
+    arr[n] = arr[i];
+    arr[i] = temp;
+  }
+  return arr;
+}
+
+//sort books in alphabetical order
+function sortBooks(books) {
+  //just sort via, say, quicksort
+  console.log(quickSort(books));
+}
+
+sortBooks(['Harry Potter', 'The Expanse', 'Huckleberry Finn', '20,000 Leagues Under The Sea', 'Moby Dick', 'Abaddons Gate', 'The Alchemist']);
